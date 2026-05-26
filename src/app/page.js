@@ -6,9 +6,9 @@ import TrustSection from '@/components/home/TrustSection';
 // import BrandSection from '@/components/home/BrandSection';
 
 export const metadata = {
-  title: 'Dwarka Orthodontics — Premium Orthodontic Supplies | B2B India',
+  title: 'Dwarka Orthodontics — Premium Orthodontic Supplies',
   description:
-    'India\'s trusted B2B supplier of premium orthodontic brackets, wires, pliers, instruments, and consumables. GST invoices, pan India delivery, 5000+ clinics served.',
+    'India\'s trusted supplier of premium orthodontic brackets, wires, pliers, instruments, and consumables. GST invoices, pan India delivery, 5000+ clinics served.',
 };
 
 export default function HomePage() {

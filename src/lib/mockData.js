@@ -12,7 +12,7 @@ export const CONTACT = {
 
 export const announcements = [
   'Free shipping on all orders above ₹2,000 — Pan India delivery',
-  'GST invoices on every order — B2B clinic pricing available',
+  'GST invoices on every order — clinic pricing available',
   'Same-day dispatch for orders placed before 2 PM (Mon–Sat)',
   'Bulk pricing for dental colleges & multi-chair clinics — WhatsApp for quotes',
 ];
@@ -141,7 +141,7 @@ export const categories = [
   {
     id: 7,
     name: 'Miscellaneous',
-    slug: 'Miscellaneous',
+    slug: 'miscellaneous',
     description: 'Separators, molar bands, cheek retractors, and disposables',
     productCount: 73,
     gradient: 'from-orange-50 to-orange-100',
@@ -154,7 +154,7 @@ export const categories = [
   {
     id: 8,
     name: 'Health & Hygiene',
-    slug: 'Health & Hygiene',
+    slug: 'health-and-hygiene',
     description: 'Maks, gloves, sanitizers and much more',
     productCount: 15,
     gradient: 'from-orange-50 to-orange-100',

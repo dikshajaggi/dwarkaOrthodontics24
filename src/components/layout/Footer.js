@@ -64,7 +64,7 @@ export default function Footer() {
               <span className="text-white font-semibold text-sm">Dwarka Orthodontics</span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed mb-5">
-              India&apos;s trusted B2B supplier of premium orthodontic instruments, brackets, wires, and consumables. Serving clinics and dental colleges for over 20 years.
+              India&apos;s trusted supplier of premium orthodontic instruments, brackets, wires, and consumables. Serving clinics and dental colleges for over 20 years.
             </p>
             <div className="space-y-2.5 text-xs">
               <p className="flex items-start gap-2.5">
@@ -132,7 +132,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href={`mailto:${CONTACT.email}`} className="text-slate-500 hover:text-white transition-colors">
-                  Bulk / B2B Orders
+                  Bulk / Normal Orders
                 </a>
               </li>
             </ul>
@@ -177,7 +177,6 @@ export default function Footer() {
       <div className="border-t border-slate-900 py-5 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-600">
           <p>© 2025 Dwarka Orthodontics. All rights reserved. · New Delhi, India</p>
-          {/* <p>B2B Orthodontic Supplies · GST Compliant</p> */}
         </div>
       </div>
     </footer>

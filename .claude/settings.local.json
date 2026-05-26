@@ -21,7 +21,9 @@
       "Bash(Write-Host \"Deleted CartContext.js\")",
       "Bash(findstr supabase *)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\devel\\\\Desktop\\\\dwarka_orthodontics\\\\node_modules\" -Directory | Where-Object { $_.Name -match \"supabase\" } | Select-Object -ExpandProperty Name)",
-      "Bash(curl -s http://localhost:3000/ -o /dev/null -w \"%{http_code}\")"
+      "Bash(curl -s http://localhost:3000/ -o /dev/null -w \"%{http_code}\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next, 'react:', p.dependencies.react\\)\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

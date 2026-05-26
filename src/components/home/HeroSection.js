@@ -12,7 +12,7 @@ const trustBadges = [
   'GST Invoice on Every Order',
   '100% Authentic Products',
   'Pan India Delivery',
-  'Dedicated B2B Support',
+  'Dedicated Support',
 ];
 
 function WhatsAppIcon() {
@@ -57,8 +57,7 @@ export default function HeroSection() {
 
         {/* Subheading */}
         <p className="text-slate-400 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-          {/* Premium brackets, wires, instruments, and consumables — delivered to your clinic with GST invoices and expert B2B support. */}
-          Premium brackets, wires, pliers and other intruments — delivered to your clinic with GST invoices and expert B2B support.
+          Premium brackets, wires, pliers and other intruments — delivered to your clinic with GST invoices and fast support.
         </p>
 
         {/* CTA Buttons */}

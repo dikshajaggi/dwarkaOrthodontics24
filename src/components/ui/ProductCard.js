@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
   const waHref = `https://wa.me/${CONTACT.whatsapp}?text=${waMessage}`;
 
   return (
-    <div className="group bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-slate-200 hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
+    <div className="group bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-slate-200 hover:-translate-y-0.5 transition-all duration-300 flex flex-col h-full">
 
       {/* Image / visual area */}
       <Link href={`/products/${product.slug}`} className="block relative overflow-hidden">

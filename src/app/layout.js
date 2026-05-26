@@ -12,15 +12,15 @@ const geist = Geist({
 
 export const metadata = {
   title: {
-    default: 'Dwarka Orthodontics — Premium Orthodontic Supplies | B2B India',
+    default: 'Dwarka Orthodontics — Premium Orthodontic Supplies',
     template: '%s | Dwarka Orthodontics',
   },
   description:
-    'India\'s trusted B2B supplier of premium orthodontic brackets, wires, pliers, instruments, and consumables. GST invoices, pan India delivery, 5000+ clinics served.',
-  keywords: ['orthodontic supplies', 'orthodontic brackets', 'dental instruments', 'orthodontic wires', 'B2B dental supplier India', 'orthodontic pliers'],
+    'India\'s trusted supplier of premium orthodontic brackets, wires, pliers, instruments, and consumables. GST invoices, pan India delivery, 5000+ clinics served.',
+  keywords: ['orthodontic supplies', 'orthodontic brackets', 'dental instruments', 'orthodontic wires', 'dental supplier India', 'orthodontic pliers'],
   openGraph: {
     title: 'Dwarka Orthodontics — Premium Orthodontic Supplies',
-    description: 'B2B orthodontic supplier trusted by 5000+ clinics across India. GST invoices, fast shipping, authentic products.',
+    description: 'Orthodontic supplier trusted by 5000+ clinics across India. GST invoices, fast shipping, authentic products.',
     type: 'website',
     locale: 'en_IN',
   },

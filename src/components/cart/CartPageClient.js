@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useCartStore, selectSubtotal } from '@/lib/cartStore';
 import { applyCoupon, COUPONS } from '@/lib/coupons';
@@ -106,6 +106,20 @@ export default function CartPageClient() {
   const [ordered, setOrdered] = useState(false);
   const [successData, setSuccessData] = useState(null);
 
+  const fieldRefs = useRef({});
+  const FIELD_ORDER = ['name', 'phone', 'address', 'city', 'state', 'pincode'];
+
+  function scrollToFirstError(errs) {
+    for (const field of FIELD_ORDER) {
+      if (errs[field] && fieldRefs.current[field]) {
+        const el = fieldRefs.current[field];
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.focus({ preventScroll: true });
+        break;
+      }
+    }
+  }
+
   // ── Price math ────────────────────────────────────────────────────────────
   const discount = appliedCoupon?.discount || 0;
   const afterDiscount = subtotal - discount;
@@ -157,6 +171,7 @@ export default function CartPageClient() {
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
+      scrollToFirstError(errs);
       return;
     }
 
@@ -275,7 +290,7 @@ export default function CartPageClient() {
           </div>
 
           {/* Coupon */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-4 sm:p-5">
+          {/* <div className="bg-white border border-slate-100 rounded-2xl p-4 sm:p-5">
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-slate-900">Coupon Code</p>
               <button
@@ -341,7 +356,7 @@ export default function CartPageClient() {
             {couponError && (
               <p className="text-xs text-red-500 mt-2">{couponError}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Checkout form */}
           <div className="bg-white border border-slate-100 rounded-2xl p-4 sm:p-5">
@@ -352,11 +367,11 @@ export default function CartPageClient() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
                 <Field label="Full Name *" error={errors.name}>
-                  <input name="name" value={form.name} onChange={handleField} placeholder="Dr. Rahul Sharma" className={inputCls(errors.name)} />
+                  <input ref={(el) => { fieldRefs.current.name = el; }} name="name" value={form.name} onChange={handleField} placeholder="Dr. Rahul Sharma" className={inputCls(errors.name)} />
                 </Field>
 
                 <Field label="WhatsApp / Phone *" error={errors.phone}>
-                  <input name="phone" value={form.phone} onChange={handleField} placeholder="98765 43210" maxLength={10} className={inputCls(errors.phone)} />
+                  <input ref={(el) => { fieldRefs.current.phone = el; }} name="phone" value={form.phone} onChange={handleField} placeholder="98765 43210" maxLength={10} className={inputCls(errors.phone)} />
                 </Field>
 
                 <Field label="Clinic / Hospital Name" className="sm:col-span-2">
@@ -364,19 +379,19 @@ export default function CartPageClient() {
                 </Field>
 
                 <Field label="Delivery Address *" error={errors.address} className="sm:col-span-2">
-                  <input name="address" value={form.address} onChange={handleField} placeholder="Street, Area, Landmark" className={inputCls(errors.address)} />
+                  <input ref={(el) => { fieldRefs.current.address = el; }} name="address" value={form.address} onChange={handleField} placeholder="Street, Area, Landmark" className={inputCls(errors.address)} />
                 </Field>
 
                 <Field label="City *" error={errors.city}>
-                  <input name="city" value={form.city} onChange={handleField} placeholder="Delhi" className={inputCls(errors.city)} />
+                  <input ref={(el) => { fieldRefs.current.city = el; }} name="city" value={form.city} onChange={handleField} placeholder="Delhi" className={inputCls(errors.city)} />
                 </Field>
 
                 <Field label="State *" error={errors.state}>
-                  <input name="state" value={form.state} onChange={handleField} placeholder="Delhi" className={inputCls(errors.state)} />
+                  <input ref={(el) => { fieldRefs.current.state = el; }} name="state" value={form.state} onChange={handleField} placeholder="Delhi" className={inputCls(errors.state)} />
                 </Field>
 
                 <Field label="Pincode *" error={errors.pincode}>
-                  <input name="pincode" value={form.pincode} onChange={handleField} placeholder="110075" maxLength={6} className={inputCls(errors.pincode)} />
+                  <input ref={(el) => { fieldRefs.current.pincode = el; }} name="pincode" value={form.pincode} onChange={handleField} placeholder="110075" maxLength={6} className={inputCls(errors.pincode)} />
                 </Field>
 
                 <Field label="Order Notes" className="">

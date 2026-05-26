@@ -460,7 +460,7 @@ Good — I've fully reviewed the codebase. Now I have everything I need to desig
   -- INVENTORY: public reads stock_status only
   CREATE POLICY "Public reads stock status"
     ON inventory FOR SELECT
-    USING (true);   -- quantity visible too, fine for B2B transparency
+    USING (true);   -- quantity visible too, fine for transparency
 
   CREATE POLICY "Admins manage inventory"
     ON inventory FOR ALL
@@ -624,7 +624,7 @@ Good — I've fully reviewed the codebase. Now I have everything I need to desig
   │ Price storage           │ numeric(10,2) in rupees      │ The current "₹2,000/-" string is bad for math.    │
   │                         │                              │ Format at display layer.                          │
   ├─────────────────────────┼──────────────────────────────┼───────────────────────────────────────────────────┤
-  │ Customer identity       │ phone_normalized             │ No registration needed — matches B2B              │
+  │ Customer identity       │ phone_normalized             │ No registration needed              │
   │                         │                              │ WhatsApp-first UX                                 │
   ├─────────────────────────┼──────────────────────────────┼───────────────────────────────────────────────────┤
   │ Order creation          │ Service role client in       │ Bypasses RLS cleanly; no JWT needed for guests    │
