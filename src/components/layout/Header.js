@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CONTACT, categories } from '@/lib/mockData';
 import { products } from '@/lib/mockProducts';
+import { fuzzySearch } from '@/lib/search';
 import { useCartStore, selectTotalItems } from '@/lib/cartStore';
 import { openWhatsApp } from '@/lib/whatsapp';
 
@@ -40,20 +41,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const totalItems = useCartStore(selectTotalItems);
 
-  const searchResults = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    if (!q) return [];
-    return products
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.sku.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          (p.shortSpecs || '').toLowerCase().includes(q) ||
-          (p.tags || []).some((t) => t.toLowerCase().includes(q))
-      )
-      .slice(0, 5);
-  }, [searchQuery]);
+  const searchResults = useMemo(() => fuzzySearch(products, searchQuery, 5), [searchQuery]);
 
   const searchBtnRef = useRef(null);
   const searchBarRef = useRef(null);

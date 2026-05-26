@@ -106,15 +106,22 @@ export default function ProductImages({ product }) {
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
           onClick={() => setZoomed(false)}
         >
-          <div className={`w-full max-w-lg aspect-square rounded-3xl bg-gradient-to-br flex flex-col items-center justify-center`}>
-            {/* <span className={`text-5xl font-black ${activeView.iconColor}`} style={{ opacity: 0.2 }}> */}
-             <span className={`text-5xl font-black`} style={{ opacity: 0.2 }}>
-              {/* {activeView.sku} */}
-              {product.sku}
-            </span>
-            <span className={`text-sm font-semibold uppercase tracking-widest ${activeView.iconColor} mt-3`} style={{ opacity: 0.6 }}>
-              {product.name}
-            </span>
+          <div className="w-full max-w-lg aspect-square rounded-3xl overflow-hidden relative bg-white">
+            {product.image ? (
+              <Image
+                src={`/uploads/${product.image}`}
+                alt={product.name}
+                fill
+                sizes="(max-width: 640px) 100vw, 512px"
+                className="object-contain"
+                priority
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-5xl font-black opacity-20">{product.sku}</span>
+                <span className="text-sm font-semibold uppercase tracking-widest mt-3 opacity-60">{product.name}</span>
+              </div>
+            )}
           </div>
           <button className="absolute top-4 right-4 text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

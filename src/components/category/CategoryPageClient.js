@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import ProductCard from '@/components/ui/ProductCard';
 import { CONTACT } from '@/lib/mockData';
+import { fuzzySearch } from '@/lib/search';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const sortOptions = [
@@ -69,15 +70,7 @@ export default function CategoryPageClient({ category, products }) {
     let result = products;
 
     if (activeSearch) {
-      const q = activeSearch.toLowerCase();
-      result = result.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.sku.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          (p.shortSpecs || '').toLowerCase().includes(q) ||
-          (p.tags || []).some((t) => t.toLowerCase().includes(q))
-      );
+      result = fuzzySearch(result, activeSearch);
     }
 
     // if (filters.brands.length > 0) result = result.filter((p) => filters.brands.includes(p.brand));

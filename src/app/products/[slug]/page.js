@@ -110,10 +110,10 @@ export default async function ProductPage({ params }) {
             </div>
 
             {/* Quick specs box */}
-            <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+            {/* <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Quick Specs</p>
-              <p className="text-sm font-medium text-slate-800">{product.shortSpecs}</p>
-            </div>
+              <p className="text-sm font-medium text-slate-800">{product.description}</p>
+            </div> */}
 
             {/* Spec pills */}
             {Object.entries(product.specs || {}).length > 0 && (

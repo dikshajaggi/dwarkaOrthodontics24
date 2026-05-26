@@ -123,7 +123,6 @@ export default function Footer() {
               <li><Link href="/" className="text-slate-500 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/#categories" className="text-slate-500 hover:text-white transition-colors">All Categories</Link></li>
               <li><Link href="#featured" className="text-slate-500 hover:text-white transition-colors">Best Sellers</Link></li>
-              <li><Link href="#brands" className="text-slate-500 hover:text-white transition-colors">Brands We Stock</Link></li>
               <li><Link href="#trust" className="text-slate-500 hover:text-white transition-colors">Why Choose Us</Link></li>
               <li>
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors">

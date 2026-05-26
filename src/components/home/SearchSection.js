@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { products } from '@/lib/mockProducts';
 import { CONTACT } from '@/lib/mockData';
+import { fuzzySearch } from '@/lib/search';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const quickCategories = [
@@ -36,20 +37,7 @@ export default function SearchSection() {
     setFocused(false);
   }, [pathname]);
 
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return products
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.sku.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          (p.shortSpecs || '').toLowerCase().includes(q) ||
-          (p.tags || []).some((t) => t.toLowerCase().includes(q))
-      )
-      .slice(0, 6);
-  }, [query]);
+  const results = useMemo(() => fuzzySearch(products, query, 6), [query]);
 
   function navigate() {
     if (!query.trim()) return;
@@ -61,17 +49,9 @@ export default function SearchSection() {
   }
 
   function navigateForTerm(term) {
-    const q = term.trim().toLowerCase();
-    const match = products.find(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        p.sku.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q) ||
-        (p.shortSpecs || '').toLowerCase().includes(q) ||
-        (p.tags || []).some((t) => t.toLowerCase().includes(q))
-    );
-    if (match) {
-      router.push(`/products/${match.slug}`);
+    const matches = fuzzySearch(products, term, 1);
+    if (matches.length > 0) {
+      router.push(`/products/${matches[0].slug}`);
       setQuery('');
       setFocused(false);
     } else {
