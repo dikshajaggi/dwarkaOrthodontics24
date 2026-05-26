@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { CONTACT, categories } from '@/lib/mockData';
 import { products } from '@/lib/mockProducts';
 import { useCartStore, selectTotalItems } from '@/lib/cartStore';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const navLinks = [
   { label: 'Brackets', href: '/categories/brackets' },
@@ -149,8 +150,7 @@ export default function Header() {
 
               <a
                 href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); openWhatsApp(whatsappHref); }}
                 className="hidden sm:flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-lg text-xs font-semibold transition-all"
               >
                 <WhatsAppIcon />
@@ -224,8 +224,7 @@ export default function Header() {
                         <p className="text-xs font-medium text-slate-700 mb-1.5">Can't find this product?</p>
                         <a
                           href={`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${searchQuery}'. Please share details/availability.`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          onClick={(e) => { e.preventDefault(); openWhatsApp(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${searchQuery}'. Please share details/availability.`)}`); }}
                           className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 text-xs font-semibold transition-colors"
                         >
                           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -260,8 +259,7 @@ export default function Header() {
               <div className="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 mt-2">
                 <a
                   href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={(e) => { e.preventDefault(); openWhatsApp(whatsappHref); }}
                   className="flex items-center justify-center gap-2 bg-emerald-500 text-white py-3 rounded-xl text-sm font-semibold"
                 >
                   <WhatsAppIcon />

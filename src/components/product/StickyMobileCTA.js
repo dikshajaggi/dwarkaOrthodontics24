@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { CONTACT } from '@/lib/mockData';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 function WhatsAppIcon() {
   return (
@@ -42,8 +43,7 @@ export default function StickyMobileCTA({ product }) {
         </a>
         <a
           href={waHref}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(e) => { e.preventDefault(); openWhatsApp(waHref); }}
           className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold py-3 px-4 rounded-xl text-sm transition-all flex-1"
         >
           <WhatsAppIcon />
@@ -51,8 +51,7 @@ export default function StickyMobileCTA({ product }) {
         </a>
         <a
           href={waHref}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(e) => { e.preventDefault(); openWhatsApp(waHref); }}
           className="flex items-center justify-center gap-2 bg-teal-700 hover:bg-teal-600 text-white font-semibold py-3 px-4 rounded-xl text-sm transition-all flex-1"
         >
           Enquire Now

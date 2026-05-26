@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useCartStore, selectSubtotal } from '@/lib/cartStore';
 import { applyCoupon, COUPONS } from '@/lib/coupons';
 import { CONTACT } from '@/lib/mockData';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const FREE_SHIPPING_THRESHOLD = 2000;
 const SHIPPING_FEE = 150;
@@ -201,7 +202,7 @@ export default function CartPageClient() {
     ].filter(Boolean).join('\n');
 
     const ownerWaUrl = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(lines)}`;
-    window.open(ownerWaUrl, '_blank');
+    openWhatsApp(ownerWaUrl);
 
     clearCart();
     setSuccessData({ name: form.name, phone: form.phone, total });

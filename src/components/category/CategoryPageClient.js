@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import ProductCard from '@/components/ui/ProductCard';
 import { CONTACT } from '@/lib/mockData';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const sortOptions = [
   { value: 'default', label: 'Default' },
@@ -366,8 +367,7 @@ export default function CategoryPageClient({ category, products }) {
               <p className="text-slate-400 text-sm mb-5">Ask us on WhatsApp for availability or details.</p>
               <a
                 href={`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${activeSearch}'. Please share details/availability.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); openWhatsApp(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${activeSearch}'. Please share details/availability.`)}`); }}
                 className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { products } from '@/lib/mockProducts';
 import { CONTACT } from '@/lib/mockData';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const quickCategories = [
   { label: 'Brackets', href: '/categories/brackets' },
@@ -161,8 +162,7 @@ export default function SearchSection() {
                       <p className="text-xs text-slate-400 mb-3">Ask us on WhatsApp for availability or details.</p>
                       <a
                         href={`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${query}'. Please share details/availability.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={(e) => { e.preventDefault(); openWhatsApp(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(`Hi, I searched for '${query}'. Please share details/availability.`)}`); }}
                         className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-colors"
                       >
                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
