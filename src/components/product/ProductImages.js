@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 
 // function getImageViews(product) {
@@ -50,6 +51,21 @@ export default function ProductImages({ product }) {
             {activeView.category}
           </span>
         </div> */}
+
+         {product.image ? (
+          <Image
+            src={`/uploads/${product.image}`}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover"
+            priority={false}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-7xl font-black opacity-10">{product.sku.split('-')[0]}</span>
+          </div>
+        )}
 
         <div className="absolute bottom-3 right-3 bg-white/80 rounded-lg px-2 py-1 text-[10px] text-slate-500 font-medium">
           Tap to zoom
