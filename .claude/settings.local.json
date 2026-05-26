@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(Start-Sleep -Seconds 8)",
+      "Bash(Get-Content \"C:\\\\Users\\\\devel\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-devel-Desktop-dwarka-orthodontics\\\\a638060a-e2cd-4fab-9ac9-f0e19b3b135e\\\\tasks\\\\brywjbwpn.output\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -Last 30)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/)",
+      "PowerShell(Get-Content *)",
+      "PowerShell(npm run *)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3001/\" -UseBasicParsing -TimeoutSec 10; \"Status: $\\($r.StatusCode\\) - Length: $\\($r.Content.Length\\)\" } catch { \"Error: $_\" })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3001/categories/brackets\" -UseBasicParsing -TimeoutSec 10; \"Status: $\\($r.StatusCode\\)\" } catch { \"Error: $_\" }; try { $r2 = Invoke-WebRequest -Uri \"http://localhost:3001/products/3m-unitek-gemini-metal-brackets\" -UseBasicParsing -TimeoutSec 10; \"Product status: $\\($r2.StatusCode\\)\" } catch { \"Product error: $_\" })",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\devel\\\\Desktop\\\\dwarka_orthodontics\\\\src\\\\app\\\\cart\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\devel\\\\Desktop\\\\dwarka_orthodontics\\\\src\\\\components\\\\cart\")",
+      "Bash(Write-Host \"Directories created\")",
+      "Bash(npx next *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('zustand'\\); console.log\\('zustand OK'\\)\")",
+      "Bash(Remove-Item \"C:\\\\Users\\\\devel\\\\Desktop\\\\dwarka_orthodontics\\\\src\\\\lib\\\\CartContext.js\" -Force)",
+      "Bash(Write-Host \"Deleted CartContext.js\")",
+      "Bash(findstr supabase *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\devel\\\\Desktop\\\\dwarka_orthodontics\\\\node_modules\" -Directory | Where-Object { $_.Name -match \"supabase\" } | Select-Object -ExpandProperty Name)",
+      "Bash(curl -s http://localhost:3000/ -o /dev/null -w \"%{http_code}\")"
+    ]
+  }
+}
