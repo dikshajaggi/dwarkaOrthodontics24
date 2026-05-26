@@ -106,9 +106,18 @@ export default function CartPageClient() {
   const [errors, setErrors] = useState({});
   const [ordered, setOrdered] = useState(false);
   const [successData, setSuccessData] = useState(null);
+  const [confirmRemoveId, setConfirmRemoveId] = useState(null);
 
   const fieldRefs = useRef({});
   const FIELD_ORDER = ['name', 'phone', 'address', 'city', 'state', 'pincode'];
+
+  function handleDecrement(item) {
+    if (item.qty === 1) {
+      setConfirmRemoveId(item.id);
+    } else {
+      updateQty(item.id, item.qty - 1);
+    }
+  }
 
   function scrollToFirstError(errs) {
     for (const field of FIELD_ORDER) {
@@ -261,30 +270,52 @@ export default function CartPageClient() {
 
                 {/* Qty + remove */}
                 <div className="flex flex-col items-end gap-2 shrink-0">
-                  <div className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-xl px-1 py-0.5">
-                    <button
-                      onClick={() => updateQty(item.id, item.qty - 1)}
-                      className="w-6 h-6 flex items-center justify-center rounded-lg text-slate-500 hover:bg-white hover:text-slate-900 transition-all text-sm font-medium"
-                    >
-                      −
-                    </button>
-                    <span className="w-6 text-center text-xs font-semibold text-slate-800 tabular-nums">{item.qty}</span>
-                    <button
-                      onClick={() => updateQty(item.id, item.qty + 1)}
-                      className="w-6 h-6 flex items-center justify-center rounded-lg text-slate-500 hover:bg-white hover:text-slate-900 transition-all text-sm font-medium"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <p className="text-xs font-bold text-slate-800 tabular-nums">
-                    ₹{fmt(item.priceNum * item.qty)}
-                  </p>
-                  <button
-                    onClick={() => removeItem(item.id)}
-                    className="text-[11px] text-slate-400 hover:text-red-500 transition-colors"
-                  >
-                    Remove
-                  </button>
+                  {confirmRemoveId === item.id ? (
+                    <div className="flex flex-col items-end gap-2">
+                      <p className="text-[11px] font-medium text-slate-500">Remove item?</p>
+                      <div className="flex gap-1.5">
+                        <button
+                          onClick={() => setConfirmRemoveId(null)}
+                          className="text-[11px] font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 px-2.5 py-1.5 rounded-lg transition-colors"
+                        >
+                          Keep
+                        </button>
+                        <button
+                          onClick={() => { removeItem(item.id); setConfirmRemoveId(null); }}
+                          className="text-[11px] font-semibold text-white bg-red-500 hover:bg-red-600 px-2.5 py-1.5 rounded-lg transition-colors"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-xl px-1 py-0.5">
+                        <button
+                          onClick={() => handleDecrement(item)}
+                          className="w-6 h-6 flex items-center justify-center rounded-lg text-slate-500 hover:bg-white hover:text-slate-900 transition-all text-sm font-medium"
+                        >
+                          −
+                        </button>
+                        <span className="w-6 text-center text-xs font-semibold text-slate-800 tabular-nums">{item.qty}</span>
+                        <button
+                          onClick={() => updateQty(item.id, item.qty + 1)}
+                          className="w-6 h-6 flex items-center justify-center rounded-lg text-slate-500 hover:bg-white hover:text-slate-900 transition-all text-sm font-medium"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <p className="text-xs font-bold text-slate-800 tabular-nums">
+                        ₹{fmt(item.priceNum * item.qty)}
+                      </p>
+                      <button
+                        onClick={() => setConfirmRemoveId(item.id)}
+                        className="text-[11px] text-slate-400 hover:text-red-500 transition-colors"
+                      >
+                        Remove
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             ))}

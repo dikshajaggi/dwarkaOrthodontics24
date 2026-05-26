@@ -4,6 +4,7 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CartHydrator from '@/components/layout/CartHydrator';
+import ScrollToTop from '@/components/layout/ScrollToTop';
 
 const geist = Geist({
   variable: '--font-geist-sans',
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geist.variable} h-full`}>
       <body suppressHydrationWarning className="min-h-full flex flex-col antialiased bg-white text-slate-900">
         <CartHydrator />
+        <ScrollToTop />
         {/* <AnnouncementBar /> */}
         <Header />
         <main className="flex-1">{children}</main>
