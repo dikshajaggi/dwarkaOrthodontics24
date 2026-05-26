@@ -11,7 +11,9 @@ const navLinks = [
   { label: 'Brackets', href: '/categories/brackets' },
   { label: 'Wires', href: '/categories/wires' },
   { label: 'Pliers', href: '/categories/pliers' },
-  { label: 'All Products', href: '#categories' },
+  { label: 'Elastics', href: '/categories/elastics' },
+  { label: 'Bands & Tubes', href: '/categories/bands-tubes' },
+  { label: 'All Products', href: '/#categories' },
 ];
 
 function WhatsAppIcon({ className = 'w-4 h-4' }) {

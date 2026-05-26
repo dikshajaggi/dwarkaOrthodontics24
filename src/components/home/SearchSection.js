@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useMemo, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { products } from '@/lib/mockProducts';
 import { CONTACT } from '@/lib/mockData';
@@ -26,8 +26,14 @@ const popularTerms = [
 
 export default function SearchSection() {
   const router = useRouter();
+  const pathname = usePathname();
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    setQuery('');
+    setFocused(false);
+  }, [pathname]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -133,7 +139,7 @@ export default function SearchSection() {
                       {results.map((product) => (
                         <button
                           key={product.id}
-                          onMouseDown={() => router.push(`/products/${product.slug}`)}
+                          onMouseDown={() => { setQuery(''); setFocused(false); router.push(`/products/${product.slug}`); }}
                           className="w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
                         >
                           <svg className="w-3.5 h-3.5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

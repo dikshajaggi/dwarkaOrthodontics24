@@ -55,14 +55,14 @@ export default function CategorySection() {
           ))}
         </div>
 
-        <div className="mt-6 text-center sm:hidden">
+        {/* <div className="mt-6 text-center sm:hidden">
           <Link
             href="#"
             className="text-sm font-medium text-slate-600 border border-slate-200 bg-white px-5 py-2.5 rounded-xl inline-block hover:border-slate-300 transition-colors"
           >
             View all categories →
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
