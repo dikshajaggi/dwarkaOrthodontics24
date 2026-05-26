@@ -10,7 +10,7 @@ import { openWhatsApp } from '@/lib/whatsapp';
 
 const navLinks = [
   { label: 'Brackets', href: '/categories/brackets' },
-  { label: 'Wires', href: '/categories/wires' },
+  { label: 'Wires', href: '/categories/wires-springs' },
   { label: 'Pliers', href: '/categories/pliers' },
   { label: 'Elastics', href: '/categories/elastics' },
   { label: 'Bands & Tubes', href: '/categories/bands-tubes' },

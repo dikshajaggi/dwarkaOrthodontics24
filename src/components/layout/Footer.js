@@ -121,7 +121,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-5 tracking-tight">Quick Links</h4>
             <ul className="space-y-2.5 text-xs">
               <li><Link href="/" className="text-slate-500 hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="#categories" className="text-slate-500 hover:text-white transition-colors">All Categories</Link></li>
+              <li><Link href="/#categories" className="text-slate-500 hover:text-white transition-colors">All Categories</Link></li>
               <li><Link href="#featured" className="text-slate-500 hover:text-white transition-colors">Best Sellers</Link></li>
               <li><Link href="#brands" className="text-slate-500 hover:text-white transition-colors">Brands We Stock</Link></li>
               <li><Link href="#trust" className="text-slate-500 hover:text-white transition-colors">Why Choose Us</Link></li>
@@ -131,7 +131,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${CONTACT.email}`} className="text-slate-500 hover:text-white transition-colors">
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors">
                   Bulk / Normal Orders
                 </a>
               </li>
@@ -165,10 +165,10 @@ export default function Footer() {
                 </p>
               ))}
             </div>
-            <div className="mt-5 p-3 bg-white/5 border border-white/10 rounded-xl">
+            {/* <div className="mt-5 p-3 bg-white/5 border border-white/10 rounded-xl">
               <p className="text-[10px] text-slate-600 uppercase tracking-widest mb-1">GST Number</p>
               <p className="text-xs text-slate-400 font-mono">{CONTACT.gst}</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
